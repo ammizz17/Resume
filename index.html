@@ -3,642 +3,562 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ammar Izzuddin · Electronic Engineer</title>
-  <!-- Google Fonts & Font Awesome -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <title>Ammar Izzuddin · Electronics CV</title>
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: #f2f6fc;
-      color: #1e2b3c;
-      line-height: 1.6;
+      background: #0b0e14;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 2rem 1rem;
-      animation: fadeIn 1s ease-out;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 180, 255, 0.08) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(100, 0, 255, 0.06) 0%, transparent 35%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 8px);
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(24px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 36px;
-      box-shadow: 0 30px 60px -15px rgba(0, 20, 40, 0.20);
+    /* main card – electronics panel */
+    .resume-card {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(18, 25, 35, 0.85);
+      backdrop-filter: blur(4px);
+      border-radius: 2.5rem;
+      padding: 2.2rem 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 255, 255, 0.15), 0 0 20px rgba(0, 180, 255, 0.2);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      transition: 0.3s;
+      animation: cardPulse 4s infinite alternate ease-in-out;
+      position: relative;
       overflow: hidden;
-      padding: 2.8rem 2.8rem;
-      transition: box-shadow 0.3s ease;
     }
 
-    .container:hover {
-      box-shadow: 0 35px 70px -15px rgba(0, 30, 60, 0.25);
+    /* animated circuit traces background */
+    .resume-card::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -20%;
+      width: 140%;
+      height: 160%;
+      background: 
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 255, 255, 0.02) 40px, rgba(0, 255, 255, 0.02) 42px),
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0, 255, 255, 0.02) 40px, rgba(0, 255, 255, 0.02) 42px);
+      pointer-events: none;
+      z-index: 0;
+      animation: traceMove 12s linear infinite;
     }
 
-    /* ===== HEADER ===== */
+    @keyframes traceMove {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(30px, 20px) rotate(2deg); }
+    }
+
+    @keyframes cardPulse {
+      0% { box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 255, 255, 0.15), 0 0 20px rgba(0, 180, 255, 0.2); }
+      100% { box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(0, 255, 200, 0.3), 0 0 40px rgba(0, 200, 255, 0.4); }
+    }
+
+    /* content layer above background */
+    .resume-content {
+      position: relative;
+      z-index: 2;
+      color: #e0f0ff;
+    }
+
+    /* header with glitch effect + profile picture */
     .header {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 2.5rem;
-      border-bottom: 2px solid #eaf0f6;
-      padding-bottom: 1.8rem;
-      animation: slideDown 0.6s ease-out;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.8rem;
+      position: relative;
+      gap: 1rem;
     }
 
-    @keyframes slideDown {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 40%;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+      background-size: 200% 100%;
+      animation: glowLine 3s linear infinite;
+      border-radius: 4px;
+    }
+
+    @keyframes glowLine {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
     }
 
     .name-title h1 {
-      font-size: 2.6rem;
+      font-size: 2.2rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      background: linear-gradient(145deg, #0a3147, #1b4f6e);
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #a0f0ff, #7a9eff, #c084fc);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 0.2rem;
+      text-shadow: 0 0 12px rgba(0, 180, 255, 0.5);
+      animation: flicker 3s infinite alternate;
     }
 
-    .name-title .subhead {
-      font-size: 1rem;
-      font-weight: 400;
-      color: #3e5b73;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 1rem;
-      align-items: center;
+    @keyframes flicker {
+      0% { opacity: 0.95; text-shadow: 0 0 5px #00ccff, 0 0 15px #0066ff; }
+      100% { opacity: 1; text-shadow: 0 0 12px #00ffff, 0 0 30px #9900ff, 0 0 60px #00aaff; }
     }
 
     .badge {
-      background: #dce8f2;
-      padding: 0.2rem 1.1rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #1a4b6a;
-      letter-spacing: 0.3px;
-    }
-
-    .contact-block {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1.2rem;
-      margin-top: 0.6rem;
-      background: #f6faff;
-      padding: 0.5rem 1.2rem;
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid #00ffff;
       border-radius: 60px;
-      border: 1px solid #e3ecf5;
-    }
-
-    .contact-block a, .contact-block span {
+      padding: 0.4rem 1.2rem;
       font-size: 0.85rem;
-      color: #1a3a50;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
+      font-weight: 500;
+      color: #b0f0ff;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(2px);
+      animation: badgePulse 2s infinite alternate;
+      display: inline-block;
+      margin-top: 6px;
     }
 
-    .contact-block i {
-      color: #1f5a7a;
-      width: 1.1rem;
-    }
-
-    .contact-block a:hover {
-      color: #0f2d40;
-      transform: scale(1.02);
-    }
-
-    .header-right {
-      text-align: right;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      font-size: 0.9rem;
-      color: #2b4a61;
-      background: #f6faff;
-      padding: 0.5rem 1.2rem;
-      border-radius: 60px;
-      border: 1px solid #e3ecf5;
-    }
-
-    .header-right i {
-      margin-right: 6px;
-      color: #1f5a7a;
-    }
-
-    /* ===== GRID LAYOUT ===== */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 2.2fr;
-      gap: 2.8rem;
-      margin-top: 0.2rem;
-    }
-
-    /* ===== LEFT SIDEBAR ===== */
-    .sidebar {
-      animation: fadeLeft 0.8s ease-out;
-    }
-
-    @keyframes fadeLeft {
-      0% { opacity: 0; transform: translateX(-22px); }
-      100% { opacity: 1; transform: translateX(0); }
+    @keyframes badgePulse {
+      0% { border-color: #00ffff; box-shadow: 0 0 5px #00ffff; }
+      100% { border-color: #ff66ff; box-shadow: 0 0 15px #ff44ff; }
     }
 
     /* ---- PROFILE PICTURE ---- */
-    .profile-pic {
-      text-align: center;
-      margin-bottom: 2rem;
+    .profile-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
-    .profile-pic .avatar {
-      width: 140px;
-      height: 140px;
+    .profile-pic {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 8px 24px rgba(0, 20, 40, 0.12);
-      transition: all 0.3s ease;
-      background: #dce8f2;
-      display: inline-block;
-    }
-
-    .profile-pic .avatar:hover {
-      transform: scale(1.03) rotate(1deg);
-      box-shadow: 0 14px 34px rgba(0, 20, 40, 0.18);
-      border-color: #b8cfe0;
-    }
-
-    .profile-pic .pic-label {
-      font-size: 0.7rem;
-      color: #5f7d99;
-      margin-top: 0.3rem;
-      letter-spacing: 0.3px;
-    }
-
-    .profile-pic .pic-label i {
-      margin-right: 4px;
-    }
-
-    .sidebar-section {
-      margin-bottom: 2.2rem;
-    }
-
-    .sidebar-section h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #1a4b6a;
-      border-bottom: 2px solid #e2eaf2;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .sidebar-section h3 i {
-      font-size: 1.1rem;
-      color: #286b8f;
-    }
-
-    .skill-item {
-      background: #f6faff;
-      padding: 0.45rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #1a3349;
-      margin-bottom: 0.3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: 0.15s ease;
-      border: 1px solid #eaf1f9;
-    }
-
-    .skill-item:hover {
-      background: #ecf4fd;
-      transform: translateX(4px);
-      border-color: #c7dae9;
-    }
-
-    .skill-item .level {
-      font-weight: 400;
-      font-size: 0.7rem;
-      background: #dce8f2;
-      padding: 0.1rem 0.8rem;
-      border-radius: 40px;
-      color: #1f4b6e;
-    }
-
-    .edu-card {
-      background: #f8fbfe;
-      padding: 0.9rem 1.2rem;
-      border-radius: 18px;
-      margin-bottom: 0.7rem;
-      border-left: 4px solid #286b8f;
-      transition: 0.2s ease;
-    }
-
-    .edu-card:hover {
-      background: #f2f7fd;
-      transform: translateX(5px);
-    }
-
-    .edu-card strong {
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(0, 150, 255, 0.2);
+      transition: 0.3s;
+      animation: profileGlow 3s infinite alternate;
+      background: #102030; /* fallback if image missing */
       display: block;
-      font-weight: 700;
-      color: #0b2b44;
     }
 
-    .edu-card .meta {
-      font-size: 0.85rem;
-      color: #3a5a73;
+    .profile-pic:hover {
+      transform: scale(1.05);
+      border-color: #ff66ff;
+      box-shadow: 0 0 30px #ff44ff, 0 0 60px #00aaff;
     }
 
-    .edu-card .year {
-      font-size: 0.75rem;
-      background: #e2ebf4;
-      padding: 0.1rem 0.8rem;
-      border-radius: 30px;
-      display: inline-block;
-      margin-top: 0.2rem;
+    @keyframes profileGlow {
+      0% { box-shadow: 0 0 10px #00ffff, 0 0 20px #0066ff; }
+      100% { box-shadow: 0 0 25px #ff66ff, 0 0 50px #00ccff; }
     }
 
-    .achievement-list {
-      list-style: none;
-    }
-
-    .achievement-list li {
-      background: #f6faff;
-      padding: 0.4rem 1rem 0.4rem 2rem;
-      margin-bottom: 0.35rem;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      position: relative;
-      transition: 0.15s ease;
-    }
-
-    .achievement-list li i {
-      position: absolute;
-      left: 0.6rem;
-      top: 0.55rem;
-      color: #1f6b4a;
-      font-size: 0.8rem;
-    }
-
-    .achievement-list li:hover {
-      background: #ecf4fd;
-      transform: translateX(4px);
-    }
-
-    .lang-row {
-      display: flex;
-      justify-content: space-between;
-      background: #f6faff;
-      padding: 0.4rem 1.2rem;
-      border-radius: 40px;
-      margin-bottom: 0.3rem;
-      font-size: 0.9rem;
-    }
-
-    .lang-row span:first-child {
-      font-weight: 500;
-    }
-    .lang-row span:last-child {
-      color: #2d5c7a;
-    }
-
-    /* ===== RIGHT CONTENT ===== */
-    .main-content {
-      animation: fadeRight 0.8s ease-out;
-    }
-
-    @keyframes fadeRight {
-      0% { opacity: 0; transform: translateX(20px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
-
-    .main-section {
-      margin-bottom: 2.5rem;
-    }
-
-    .main-section h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      color: #1a4b6a;
-      border-bottom: 2px solid #e2eaf2;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .main-section h3 i {
-      color: #286b8f;
-    }
-
-    .summary-box {
-      background: #f6faff;
-      padding: 1.2rem 1.6rem;
-      border-radius: 22px;
-      font-size: 0.98rem;
-      line-height: 1.7;
-      border: 1px solid #e6eef8;
-      transition: 0.2s ease;
-    }
-
-    .summary-box:hover {
-      background: #f2f8ff;
-      border-color: #c7daea;
-    }
-
-    .exp-item {
-      background: #fafdff;
-      border: 1px solid #e6eef8;
-      border-radius: 20px;
-      padding: 1.2rem 1.5rem;
-      margin-bottom: 1.2rem;
-      transition: all 0.2s ease;
-    }
-
-    .exp-item:hover {
-      background: #f3f9ff;
-      border-color: #bcd0e5;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 14px rgba(0, 20, 30, 0.04);
-    }
-
-    .exp-item .exp-header {
+    /* contact info */
+    .contact-info {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.4rem;
+      gap: 1.2rem 1.8rem;
+      margin: 0.5rem 0 1rem 0;
+      font-size: 0.95rem;
+      color: #b0d0e8;
+      border-left: 2px solid #00ffff40;
+      padding-left: 1rem;
     }
 
-    .exp-item .exp-header h4 {
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: #0b2b44;
+    .contact-info i {
+      color: #00ffff;
+      width: 1.2rem;
+      margin-right: 0.3rem;
+      animation: iconGlow 2s infinite alternate;
     }
 
-    .exp-item .exp-header .place {
-      font-weight: 500;
-      color: #2d5c7a;
-      font-size: 0.9rem;
+    @keyframes iconGlow {
+      0% { filter: drop-shadow(0 0 2px #00ffff); }
+      100% { filter: drop-shadow(0 0 10px #ff66ff); }
     }
 
-    .exp-item .exp-header .date {
-      font-size: 0.75rem;
-      font-weight: 500;
-      background: #e6eefa;
-      padding: 0.15rem 1rem;
-      border-radius: 40px;
-      color: #1f4b6e;
+    .contact-info span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
     }
 
-    .exp-item ul {
-      list-style: none;
-      margin-top: 0.4rem;
+    /* grid layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+      margin-top: 0.5rem;
     }
 
-    .exp-item ul li {
-      padding: 0.2rem 0 0.2rem 1.6rem;
-      position: relative;
-      font-size: 0.9rem;
-    }
-
-    .exp-item ul li::before {
-      content: "▹";
-      position: absolute;
-      left: 0;
-      color: #286b8f;
-      font-weight: 600;
-    }
-
-    .extra-note {
-      margin-top: 0.6rem;
-      font-size: 0.85rem;
-      background: #eef5fc;
-      padding: 0.4rem 1.2rem;
-      border-radius: 40px;
-      display: inline-block;
-      color: #1f4b6e;
-    }
-
-    hr {
-      border: 0;
-      border-top: 1px solid #e0eaf2;
-      margin: 0.8rem 0 0.2rem 0;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 850px) {
+    @media (max-width: 700px) {
       .grid-2 {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.8rem;
+      }
+      .resume-card {
+        padding: 1.5rem;
+      }
+      .name-title h1 {
+        font-size: 1.7rem;
       }
       .header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.8rem;
       }
-      .header-right {
-        text-align: left;
-        width: 100%;
+      .profile-wrapper {
+        align-self: flex-start;
       }
-      .container {
-        padding: 1.8rem 1.5rem;
-      }
-      .name-title h1 {
-        font-size: 2.2rem;
-      }
-      .profile-pic .avatar {
-        width: 120px;
-        height: 120px;
+      .profile-pic {
+        width: 80px;
+        height: 80px;
       }
     }
 
-    @media (max-width: 480px) {
-      body { padding: 0.6rem; }
-      .container { padding: 1.2rem; border-radius: 24px; }
-      .contact-block { padding: 0.3rem 0.8rem; flex-wrap: wrap; }
-      .contact-block a, .contact-block span { font-size: 0.75rem; }
-      .profile-pic .avatar { width: 100px; height: 100px; }
+    /* section titles */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #7fd4ff;
+      border-bottom: 1px solid #00aaff40;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-title i {
+      color: #00ffff;
+      font-size: 1rem;
+      animation: spin 6s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* cards inside */
+    .info-card {
+      background: rgba(0, 20, 30, 0.3);
+      backdrop-filter: blur(2px);
+      border-radius: 1.2rem;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .info-card:hover {
+      border-color: #00ffff;
+      box-shadow: 0 0 20px #00aaff30;
+      transform: scale(1.01);
+    }
+
+    .edu-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+
+    .edu-item strong {
+      color: #b0ecff;
+      font-weight: 600;
+    }
+
+    .edu-item .year {
+      color: #80b0d0;
+      font-size: 0.85rem;
+      background: #0a1a2a;
+      padding: 0.1rem 0.8rem;
+      border-radius: 30px;
+      border: 1px solid #00aaff30;
+    }
+
+    .achievement-list, .skill-list {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    .achievement-list li, .skill-list li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      border-bottom: 1px dotted #2a4a5a;
+      padding-bottom: 0.3rem;
+    }
+
+    .achievement-list li i, .skill-list li i {
+      color: #00ffff;
+      width: 1.2rem;
+      font-size: 0.8rem;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      background: #0a1a2a;
+      border: 1px solid #00aaff40;
+      border-radius: 40px;
+      padding: 0.2rem 0.9rem;
+      font-size: 0.8rem;
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+      transition: 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: #00aaff20;
+      border-color: #00ffff;
+      box-shadow: 0 0 15px #00aaff60;
+    }
+
+    .exp-item {
+      margin-bottom: 1rem;
+    }
+
+    .exp-item .exp-title {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      font-weight: 600;
+      color: #c0e4ff;
+    }
+
+    .exp-item .exp-desc {
+      font-size: 0.9rem;
+      color: #b0c8dd;
+      margin-top: 0.2rem;
+      padding-left: 0.8rem;
+      border-left: 2px solid #00aaff60;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed #2a5a6a;
+      padding: 0.4rem 0;
+    }
+
+    /* floating components */
+    .chip {
+      background: #0b1a28;
+      border-radius: 60px;
+      padding: 0.2rem 1rem;
+      border: 1px solid #00ffff30;
+      font-size: 0.8rem;
+      color: #8fcbff;
+      display: inline-block;
+    }
+
+    .glow-text {
+      color: #a0f0ff;
+    }
+
+    /* small electronics decorations */
+    .dot-pulse {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #00ffaa;
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: dotPulse 1.5s infinite alternate;
+      box-shadow: 0 0 10px #00ffaa;
+    }
+
+    @keyframes dotPulse {
+      0% { opacity: 0.3; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* summary box */
+    .summary-box {
+      background: linear-gradient(145deg, #07131e, #0f1f2e);
+      padding: 1rem 1.4rem;
+      border-radius: 1.5rem;
+      border-left: 4px solid #00ffff;
+      box-shadow: inset 0 0 20px #00aaff10;
+    }
+
+    .footer-note {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      text-align: right;
+      color: #507080;
+      border-top: 1px solid #1a3a4a;
+      padding-top: 1rem;
+      letter-spacing: 0.5px;
+    }
+    .footer-note i {
+      color: #00ffff;
+      margin: 0 4px;
+    }
+    a {
+      color: #8ac8ff;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #00ffff;
     }
   </style>
 </head>
 <body>
-<div class="container">
+<div class="resume-card">
+  <div class="resume-content">
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="name-title">
-      <h1>Muhammad Ammar Izzuddin</h1>
-      <div class="subhead">
-        <span>Electronic Engineering (Hons.) · UniMAP</span>
-        <span class="badge"><i class="fas fa-calendar-check" style="margin-right: 6px;"></i>Internship: 29 July · 16 weeks</span>
+    <!-- HEADER with profile picture -->
+    <div class="header">
+      <div class="name-title">
+        <h1><i class="fas fa-microchip" style="font-size: 1.8rem; margin-right: 8px;"></i> MUHAMMAD AMMAR IZZUDDIN</h1>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.3rem;">
+          <span class="badge"><i class="fas fa-bolt"></i> 16 weeks · 29 July</span>
+          <span class="badge"><i class="fas fa-graduation-cap"></i> UniMAP · Electronic Eng.</span>
+        </div>
       </div>
-      <div class="contact-block">
-        <a href="tel:01163290991"><i class="fas fa-phone-alt"></i> 011-6329 0991</a>
-        <a href="mailto:ammizz2003@gmail.com"><i class="fas fa-envelope"></i> ammizz2003@gmail.com</a>
-        <span><i class="fas fa-map-pin"></i> Subang Bestari, Shah Alam</span>
-      </div>
-    </div>
-    <div class="header-right">
-      <span><i class="fas fa-graduation-cap"></i> Diploma · 2021-2024</span>
-      <span><i class="fas fa-trophy"></i> MSSD hockey (2018, 2020)</span>
-    </div>
-  </header>
 
-  <!-- GRID -->
-  <div class="grid-2">
-
-    <!-- ========== SIDEBAR ========== -->
-    <aside class="sidebar">
-
-      <!-- PROFILE PICTURE -->
-      <div class="profile-pic">
-        <!-- Replace the src with your actual image URL -->
+      <!-- PROFILE PICTURE (replace src with your actual image) -->
+      <div class="profile-wrapper">
         <img 
-          class="avatar" 
-          src="https://ui-avatars.com/api/?name=Muhammad+Ammar+Izzuddin&size=140&background=dce8f2&color=1a4b6a&bold=true&font-size=0.5" 
-          alt="Profile picture of Ammar Izzuddin"
-          title="Replace src with your photo"
+          class="profile-pic" 
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%231a2a3a'/%3E%3Ccircle cx='100' cy='80' r='45' fill='%2300ccff' opacity='0.3'/%3E%3Ccircle cx='100' cy='80' r='28' fill='%2300aaff' opacity='0.5'/%3E%3Ccircle cx='100' cy='80' r='14' fill='%23a0f0ff' /%3E%3Cpath d='M60 150 Q100 120 140 150' stroke='%2300ffff' stroke-width='4' fill='none' opacity='0.6'/%3E%3C/svg%3E"
+          alt="Profile picture placeholder"
+          title="Ammar Izzuddin"
         />
-        <div class="pic-label"><i class="fas fa-camera"></i> upload your picture (replace src)</div>
       </div>
+    </div>
 
-      <!-- SKILLS -->
-      <section class="sidebar-section">
-        <h3><i class="fas fa-microchip"></i> Technical Skills</h3>
-        <div class="skill-item"><span>AutoCAD</span><span class="level">Intermediate</span></div>
-        <div class="skill-item"><span>CODESYS</span><span class="level">Average</span></div>
-        <div class="skill-item"><span>VMware Workstation</span><span class="level">Average</span></div>
-      </section>
+    <!-- CONTACT -->
+    <div class="contact-info">
+      <span><i class="fas fa-phone-alt"></i> 011-63290991</span>
+      <span><i class="fas fa-envelope"></i> ammizz2003@gmail.com</span>
+      <span><i class="fas fa-home"></i> No 10 Jalan Nova U5/56, Subang Bestari</span>
+    </div>
 
-      <!-- EDUCATION -->
-      <section class="sidebar-section">
-        <h3><i class="fas fa-university"></i> Education</h3>
-        <div class="edu-card">
-          <strong>UniMAP</strong>
-          <div class="meta">B.Eng Electronic Eng. Technology (Hons.)</div>
-          <span class="year">2021 – 2024</span>
+    <!-- SUMMARY -->
+    <div class="summary-box" style="margin-bottom: 1.6rem;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span class="dot-pulse"></span>
+        <span style="font-weight: 400; color: #d0ecff;"><i class="fas fa-quote-left" style="color: #00ffff; opacity: 0.6;"></i> Dedicated and energetic Electronic Engineering student seeking internship to develop current knowledge and learn new skills. <i class="fas fa-quote-right" style="color: #00ffff; opacity: 0.6;"></i></span>
+      </div>
+    </div>
+
+    <!-- GRID: LEFT + RIGHT -->
+    <div class="grid-2">
+
+      <!-- LEFT COLUMN -->
+      <div>
+
+        <!-- EDUCATION -->
+        <div class="section-title"><i class="fas fa-university"></i> Education</div>
+        <div class="info-card">
+          <div class="edu-item"><strong>Bachelor of Electronic Engineering Technology (Electronic System) Honours</strong> <span class="year">2021–2024</span></div>
+          <div style="font-size: 0.9rem; color: #90b8d0; margin-bottom: 0.8rem;">University Malaysia Perlis (UniMAP)</div>
+          <div class="edu-item"><strong>Diploma in Electronic Engineering</strong> <span class="year">2021–2024</span></div>
+          <div style="font-size: 0.9rem; color: #90b8d0; margin-bottom: 0.8rem;">UniMAP</div>
+          <div class="edu-item"><strong>Sijil Pelajaran Malaysia (SPM)</strong> <span class="year">2016–2020</span></div>
+          <div style="font-size: 0.9rem; color: #90b8d0;">SMK Subang Bestari</div>
+          <div class="edu-item" style="margin-top: 0.4rem;"><strong>Mechanical Engineering</strong> <span class="year">2019</span></div>
+          <div style="font-size: 0.9rem; color: #90b8d0;">SM Teknik Alor Setar</div>
         </div>
-        <div class="edu-card">
-          <strong>SMK Subang Bestari</strong>
-          <div class="meta">SPM</div>
-          <span class="year">2016 – 2020</span>
-        </div>
-        <div class="edu-card">
-          <strong>SM Teknik Alor Setar</strong>
-          <div class="meta">Mechanical Engineering</div>
-          <span class="year">2019</span>
-        </div>
-      </section>
 
-      <!-- ACHIEVEMENTS -->
-      <section class="sidebar-section">
-        <h3><i class="fas fa-medal"></i> Achievements</h3>
-        <ul class="achievement-list">
-          <li><i class="fas fa-hockey-puck"></i> 3rd place hockey · MSSD (2018 & 2020)</li>
-          <li><i class="fas fa-running"></i> Marathon participant (2021)</li>
-          <li><i class="fas fa-users"></i> Diploma Representative Club (DiReC)</li>
-          <li><i class="fas fa-fist-raised"></i> 3rd place silat · MSSD Kedah (2019)</li>
-        </ul>
-      </section>
-
-      <!-- LANGUAGES -->
-      <section class="sidebar-section">
-        <h3><i class="fas fa-language"></i> Languages</h3>
-        <div class="lang-row"><span>Bahasa Melayu</span><span>Native</span></div>
-        <div class="lang-row"><span>English</span><span>Average</span></div>
-      </section>
-
-    </aside>
-
-    <!-- ========== MAIN CONTENT ========== -->
-    <main class="main-content">
-
-      <!-- SUMMARY -->
-      <section class="main-section">
-        <h3><i class="fas fa-user-astronaut"></i> Summary</h3>
-        <div class="summary-box">
-          Dedicated and energetic Electronic Engineering student seeking to secure an internship that will help in the development current knowledge as well as learning new skills. Availability starts <strong>29 July</strong> for <strong>16 weeks</strong>.
-        </div>
-      </section>
-
-      <!-- WORK EXPERIENCE -->
-      <section class="main-section">
-        <h3><i class="fas fa-briefcase"></i> Work Experience</h3>
-
-        <div class="exp-item">
-          <div class="exp-header">
-            <h4>Customer Service Assistant (CSA)</h4>
-            <span class="place">KL Tower, Kuala Lumpur</span>
-            <span class="date">Part Time</span>
-          </div>
-          <ul>
-            <li>Demonstrated high level of customer service at all times.</li>
-            <li>Assisted customers with ticket purchases at the counter.</li>
-            <li>Provided guidance for customers to reach their selected destination.</li>
-            <li>Performed other assigned duties by superior from time to time.</li>
+        <!-- ACHIEVEMENTS -->
+        <div class="section-title"><i class="fas fa-trophy"></i> Achievements</div>
+        <div class="info-card">
+          <ul class="achievement-list">
+            <li><i class="fas fa-hockey-puck"></i> 3rd place Hockey · MSSD (2018 & 2020) – SMK Subang Bestari</li>
+            <li><i class="fas fa-running"></i> Marathon participant (2021)</li>
+            <li><i class="fas fa-users"></i> Diploma Representative Club (DiReC)</li>
+            <li><i class="fas fa-fist-raised"></i> 3rd place Silat · MSSD Kedah (2019) – SM Teknik Alor Setar</li>
           </ul>
         </div>
 
-        <div class="exp-item">
-          <div class="exp-header">
-            <h4>Chef &amp; Barista</h4>
-            <span class="place">Korean Chicken &amp; Tea (KC&T), Petaling Jaya</span>
-            <span class="date">Part Time</span>
-          </div>
-          <ul>
-            <li>Verified stock upon receiving delivery from supplier.</li>
-            <li>Maintained food handling and sanitation standards.</li>
-            <li>Prepared and cooked foods for influencers for food review.</li>
-            <li>Operated, maintained and properly cleaned kitchen equipment at all times.</li>
-          </ul>
+        <!-- LANGUAGES -->
+        <div class="section-title"><i class="fas fa-language"></i> Languages</div>
+        <div class="info-card">
+          <div class="lang-item"><span><i class="fas fa-check-circle" style="color: #00ffaa;"></i> Bahasa Melayu</span> <span class="chip" style="background: #0a2a3a;">Native</span></div>
+          <div class="lang-item"><span><i class="fas fa-check-circle" style="color: #66ddff;"></i> English</span> <span class="chip" style="background: #0a2a3a;">Average</span></div>
         </div>
-        <div class="extra-note">
-          <i class="fas fa-clock"></i> Part-time roles · Customer service &amp; F&B
-        </div>
-      </section>
 
-      <!-- additional info: availability & contact -->
-      <div style="margin-top: 1.8rem; background: #f2f8fe; padding: 0.8rem 1.5rem; border-radius: 60px; display: inline-flex; flex-wrap: wrap; gap: 1rem 1.8rem; border: 1px solid #d4e2f0;">
-        <span><i class="fas fa-calendar-alt" style="color: #1f5a7a;"></i> <strong>Availability:</strong> 29 July · 16 weeks</span>
-        <span><i class="fas fa-map-marker-alt" style="color: #1f5a7a;"></i> No 10 Jalan Nova U5/56, Subang Bestari</span>
       </div>
 
-    </main>
-  </div>
-  <!-- end grid -->
+      <!-- RIGHT COLUMN -->
+      <div>
 
-  <footer style="margin-top: 2.8rem; border-top: 1px solid #e2eaf2; padding-top: 1.2rem; display: flex; justify-content: space-between; flex-wrap: wrap; font-size: 0.8rem; color: #4a6a86;">
-    <span><i class="far fa-copyright"></i> 2026 · Ammar Izzuddin CV</span>
-    <span><i class="fas fa-robot"></i> built with <i class="fas fa-heart" style="color: #b33c4a;"></i> &amp; HTML/CSS</span>
-  </footer>
-</div>
-<!-- end container -->
+        <!-- WORK EXPERIENCE -->
+        <div class="section-title"><i class="fas fa-briefcase"></i> Work Experience</div>
+        <div class="info-card">
+          <div class="exp-item">
+            <div class="exp-title"><span><i class="fas fa-tower-broadcast"></i> KL Tower, Kuala Lumpur</span> <span class="chip">Part Time</span></div>
+            <div style="font-size: 0.85rem; color: #90b8d0; margin-bottom: 0.2rem;">Customer Service Assistant (CSA)</div>
+            <div class="exp-desc">✔ High-level customer service · ticket counter assistance · guidance to destinations · other assigned duties.</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-title"><span><i class="fas fa-utensils"></i> Korean Chicken & Tea (KC&T), Petaling Jaya</span> <span class="chip">Part Time</span></div>
+            <div style="font-size: 0.85rem; color: #90b8d0; margin-bottom: 0.2rem;">Chef & Barista</div>
+            <div class="exp-desc">✔ Stock verification · maintain sanitation · prepare/cook for influencers · operate & clean kitchen equipment.</div>
+          </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="section-title"><i class="fas fa-microchip"></i> Technical Skills</div>
+        <div class="info-card">
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+            <span class="skill-tag"><i class="fas fa-cube"></i> AutoCAD (Intermediate)</span>
+            <span class="skill-tag"><i class="fas fa-code"></i> CODESYS (Average)</span>
+            <span class="skill-tag"><i class="fas fa-server"></i> VMware Workstation (Average)</span>
+            <span class="skill-tag"><i class="fas fa-bolt"></i> Electronics prototyping</span>
+            <span class="skill-tag"><i class="fas fa-wave-square"></i> Circuit analysis</span>
+          </div>
+          <div style="margin-top: 0.8rem; font-size: 0.85rem; color: #80b0c0; border-top: 1px solid #1a3a4a; padding-top: 0.8rem;">
+            <i class="fas fa-sync-alt fa-spin" style="color: #00ffff;"></i> Additional: customer service, food handling, team collaboration
+          </div>
+        </div>
+
+        <!-- extra: availability / intern badge -->
+        <div style="display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap;">
+          <span class="badge" style="background: #0a2a3a;"><i class="fas fa-calendar-alt"></i> Available 29 July · 16 weeks</span>
+          <span class="badge" style="background: #0a2a3a;"><i class="fas fa-location-dot"></i> On-site / Hybrid</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER with contact again -->
+    <div class="footer-note">
+      <i class="fas fa-robot"></i>  electronics ·  <i class="fas fa-wave-square"></i>  ammizz2003@gmail.com  ·  <i class="fas fa-phone"></i> 011-63290991
+    </div>
+
+  </div> <!-- resume-content -->
+</div> <!-- resume-card -->
 </body>
 </html>
